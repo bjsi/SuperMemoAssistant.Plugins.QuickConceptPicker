@@ -32,6 +32,7 @@
 namespace SuperMemoAssistant.Plugins.QuickConceptPicker
 {
     using System.Diagnostics.CodeAnalysis;
+  using System.Linq;
   using System.Windows;
   using System.Windows.Input;
   using SuperMemoAssistant.Extensions;
@@ -85,9 +86,11 @@ namespace SuperMemoAssistant.Plugins.QuickConceptPicker
     }
     private void OpenConceptSelectionWdw()
     {
+      var concepts = Svc.SM.Registry.Concept.ToList();
+
       Application.Current.Dispatcher.Invoke(() =>
       {
-        var wdw = new ConceptPickerWdw();
+        var wdw = new ConceptPickerWdw(concepts);
         wdw.ShowAndActivate();
       });
     }

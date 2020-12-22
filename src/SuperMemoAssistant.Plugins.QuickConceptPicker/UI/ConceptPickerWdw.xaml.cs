@@ -22,9 +22,8 @@ namespace SuperMemoAssistant.Plugins.QuickConceptPicker.UI
   /// </summary>
   public partial class ConceptPickerWdw : Window
   {
-    public ConceptPickerWdw()
+    public ConceptPickerWdw(List<IConcept> Concepts)
     {
-      var Concepts = Svc.SM.Registry.Concept.ToList();
       if (Concepts == null || Concepts.Count == 0)
       {
         return;
